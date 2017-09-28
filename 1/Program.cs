@@ -11,13 +11,17 @@ namespace _1
         static void Main(string[] args)
         {
             int sequenceToAdd = int.Parse(Console.ReadLine());
-            
-            List<int> numbers = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+            if (sequenceToAdd == 0)
+            {
+                return;
+            }
+
+            List<long> numbers = Console.ReadLine().Split(' ').Select(long.Parse).ToList();
 
             for (int i = 0; i < sequenceToAdd - 1; ++i)
             {
-                int[] currentSequence = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
-                List<int> increasedSeq = new List<int>();
+                long[] currentSequence = Console.ReadLine().Split(' ').Select(long.Parse).ToArray();
+                List<long> increasedSeq = new List<long>();
                 bool isWronSequenceAppear = false;
 
                 increasedSeq.Add(currentSequence[0]);
@@ -27,10 +31,7 @@ namespace _1
                 {
                     if (currentSequence[j] > currentSequence[j + 1])
                     {
-                        if (j < currentSequence.Length - 1)
-                        {
-                            isWronSequenceAppear = true;
-                        }
+                        isWronSequenceAppear = true;
                         break;
                     }
                     increasedSeq.Add(currentSequence[j + 1]);
@@ -38,7 +39,7 @@ namespace _1
 
                 while (true)
                 {
-                    int smalestNum = increasedSeq[0];
+                    long smalestNum = increasedSeq[0];
                     int smallIndex = numbers.FindIndex(x => x >= smalestNum);
                     if (smallIndex == -1)
                     {

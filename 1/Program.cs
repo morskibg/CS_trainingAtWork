@@ -19,11 +19,12 @@ namespace _1
                 {
                     List<int> tempList = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
                     numbers = tempList;
+                    currentListIdx = numbers.Count - 1;
                     continue;
                 }
-                int[] currentSequence = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
-                
-               
+                List<int> sequence = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+                sequence.Select((a, b) => a < b);
+
             }
             Console.WriteLine(string.Join(" ", numbers));
         }

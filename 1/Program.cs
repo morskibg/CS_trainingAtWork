@@ -10,20 +10,61 @@ namespace _1
     {
         static void Main(string[] args)
         {
-            List<int> numbers = new List<int>();
-            int currentListIdx = 0;
             int sequenceToAdd = int.Parse(Console.ReadLine());
-            for(int i = 0; i < sequenceToAdd; ++i)
+            if (sequenceToAdd == 0)
             {
-                if(i == 0)
+                return;
+            }
+
+            List<long> numbers = Console.ReadLine().Split(' ').Select(long.Parse).ToList();
+
+            for (int i = 0; i < sequenceToAdd - 1; ++i)
+            {
+                long[] currentSequence = Console.ReadLine().Split(' ').Select(long.Parse).ToArray();
+                List<long> increasedSeq = new List<long>();
+                bool isWronSequenceAppear = false;
+
+                increasedSeq.Add(currentSequence[0]);
+
+
+                for (int j = 0; j < currentSequence.Length - 1; ++j)
                 {
-                    List<int> tempList = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
-                    numbers = tempList;
-                    currentListIdx = numbers.Count - 1;
-                    continue;
+                    if (currentSequence[j] > currentSequence[j + 1])
+                    {
+                        isWronSequenceAppear = true;
+                        break;
+                    }
+                    increasedSeq.Add(currentSequence[j + 1]);
                 }
-                List<int> sequence = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
-                sequence.Select((a, b) => a < b);
+
+                while (true)
+                {
+
+                    long smalestNum = increasedSeq[0];
+                    int smallIndex = numbers.FindIndex(x => x >= smalestNum);
+                    if (smallIndex == -1)
+                    {
+                        numbers.Add(smalestNum);
+                    }
+                    else
+                    {
+                        numbers.Insert(smallIndex, smalestNum);
+                    }
+                    if (increasedSeq.Count > 0)
+                    {
+                        increasedSeq.RemoveAt(0);
+                        if (increasedSeq.Count == 0)
+                        {
+                            if (isWronSequenceAppear && smalestNum != numbers.Last())
+                            {
+                                int indexToRemove = numbers.FindIndex(x => x > smalestNum);
+                                int lengthToRemove = numbers.Count - indexToRemove;
+                                numbers.RemoveRange(indexToRemove, lengthToRemove);
+                            }
+                            break;
+                        }
+                    }
+                }
 
             }
             Console.WriteLine(string.Join(" ", numbers));

@@ -22,16 +22,13 @@ namespace _1
             {
                 long[] currentSequence = Console.ReadLine().Split(' ').Select(long.Parse).ToArray();
                 List<long> increasedSeq = new List<long>();
-                bool isWronSequenceAppear = false;
-
+                bool isWrongSequenceAppear = false;
                 increasedSeq.Add(currentSequence[0]);
-
-
                 for (int j = 0; j < currentSequence.Length - 1; ++j)
                 {
                     if (currentSequence[j] > currentSequence[j + 1])
                     {
-                        isWronSequenceAppear = true;
+                        isWrongSequenceAppear = true;
                         break;
                     }
                     increasedSeq.Add(currentSequence[j + 1]);
@@ -55,7 +52,7 @@ namespace _1
                         increasedSeq.RemoveAt(0);
                         if (increasedSeq.Count == 0)
                         {
-                            if (isWronSequenceAppear && smalestNum != numbers.Last())
+                            if (isWrongSequenceAppear && smalestNum != numbers.Last())
                             {
                                 int indexToRemove = numbers.FindIndex(x => x > smalestNum);
                                 int lengthToRemove = numbers.Count - indexToRemove;

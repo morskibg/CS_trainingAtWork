@@ -17,6 +17,7 @@ namespace NE_1
             for(int i = 0; i < n; ++i)
             {
                 char[] delimiters = " ->,".ToCharArray();
+               
                 string[] args = Console.ReadLine()
                     .Split(delimiters, StringSplitOptions.RemoveEmptyEntries)
                     .ToArray();
@@ -24,14 +25,14 @@ namespace NE_1
                 if(!clothDatabase.ContainsKey(color))
                 {
                     clothDatabase[color] = new Dictionary<string, int>();
-                    for(int j = 1; j < args.Length - 1; ++j)
+                    for(int j = 1; j < args.Length; ++j)
                     {
                         clothDatabase[color].Add(args[j], 1);                        
                     }                    
                 }
                 else
                 {
-                    for (int j = 1; j < args.Length - 1; ++j)
+                    for (int j = 1; j < args.Length; ++j)
                     {
                         if (clothDatabase[color].ContainsKey(args[j]))
                         {

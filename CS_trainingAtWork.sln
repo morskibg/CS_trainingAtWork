@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nested_D_1", "Nested_D_1\Ne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nested_D_2VeryGoodInitializing!", "Nested_D_2\Nested_D_2VeryGoodInitializing!.csproj", "{767BDF44-FDB6-4532-AA75-15ED007BE52D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nested_D_3", "Nested_D_3\Nested_D_3.csproj", "{672B28E7-EC05-46D6-B687-72666361B85F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nested_D_4", "Nested_D_4\Nested_D_4.csproj", "{02BD6BC4-7D57-4DD6-9801-7AF4D5D922CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{767BDF44-FDB6-4532-AA75-15ED007BE52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{767BDF44-FDB6-4532-AA75-15ED007BE52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{767BDF44-FDB6-4532-AA75-15ED007BE52D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672B28E7-EC05-46D6-B687-72666361B85F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672B28E7-EC05-46D6-B687-72666361B85F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672B28E7-EC05-46D6-B687-72666361B85F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672B28E7-EC05-46D6-B687-72666361B85F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02BD6BC4-7D57-4DD6-9801-7AF4D5D922CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02BD6BC4-7D57-4DD6-9801-7AF4D5D922CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02BD6BC4-7D57-4DD6-9801-7AF4D5D922CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02BD6BC4-7D57-4DD6-9801-7AF4D5D922CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

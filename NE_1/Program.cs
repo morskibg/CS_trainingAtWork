@@ -11,33 +11,28 @@ namespace NE_1
         static void Main()
         {
             int n = int.Parse(Console.ReadLine());
-            Dictionary<string, Dictionary<string, int>> clothDatabase =
-                new Dictionary<string, Dictionary<string, int>>();
+            Dictionary<string, Dictionary<string, long>> clothDatabase =
+                new Dictionary<string, Dictionary<string, long>>();
 
             for (int i = 0; i < n; ++i)
             {
-                string[] separator = new string[] {" ", "->", "," };
+                string[] separator = new string[] { " -> ", "," };
                 string[] args = Console.ReadLine()
                     .Split(separator, StringSplitOptions.RemoveEmptyEntries)
                     .ToArray();
                 string color = args[0];
                 if (!clothDatabase.ContainsKey(color))
                 {
-                    clothDatabase[color] = new Dictionary<string, int>();
-                    for (int j = 1; j < args.Length; ++j)
+                    clothDatabase.Add(color, new Dictionary<string, long>());
+                    
+                }
+                for (int j = 1; j < args.Length; ++j)
+                {
+                    if (!clothDatabase[color].ContainsKey(args[j]))
                     {
                         clothDatabase[color].Add(args[j], 0);
                     }
                 }
-                   for (int j = 1; j < args.Length; ++j)
-                    {
-                        if (!clothDatabase[color].ContainsKey(args[j]))
-                        {
-                            clothDatabase[color][args[j]] = 0;
-                        }
-                    }
-                
-
                 for (int j = 1; j < args.Length; ++j)
                 {
                     if (clothDatabase[color].ContainsKey(args[j]))
@@ -47,7 +42,7 @@ namespace NE_1
                 }
 
             }
-            
+
             string[] toFind = Console.ReadLine().Split(' ').ToArray();
             string colorToFind = toFind[0];
             string itemTofind = toFind[1];
@@ -60,7 +55,7 @@ namespace NE_1
 
                     if (item.Key == itemTofind && color == colorToFind)
                     {
-                        
+
                         founded = " (found!)";
                     }
                     Console.WriteLine($"* {item.Key} - {item.Value}{founded}");

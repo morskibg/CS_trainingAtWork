@@ -10,9 +10,11 @@ namespace temp
     {
         static void Main(string[] args)
         {
-            List<string> nums = Console.ReadLine().Split(' ').ToList();
-            nums = nums.Where((val, i) => i % 2 != 0).ToList();
-            Console.WriteLine(string.Join("", nums));
+            Dictionary<string, string> simpleDict = new Dictionary<string, string>
+            {
+                { "ala", "bala"}
+            };
+
         }
     }
 }

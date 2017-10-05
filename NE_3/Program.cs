@@ -10,50 +10,49 @@ namespace NE_3
     {
         static void Main(string[] args)
         {
-            Dictionary<string, int> destinationsDatabase = new Dictionary<string, int>();
+            Dictionary<string, Dictionary<string, int>> travelDatabase = new Dictionary<string, Dictionary<string, int>>();
             string input = Console.ReadLine();
-            while (input != "ready")
+            while(input != "ready")
             {
-                char[] delimiters = ":,".ToCharArray();
-                string[] tokens = input.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).ToArray();
-                string destination = tokens.First();
-                //tokens = tokens.Where(x => x != city).ToArray();
-                tokens = tokens.Skip(1).ToArray();
-                int totalPasagers = 0;
-
-                foreach (var currVehicle in tokens)
+                string[] cityAndVehicles = input.Split(':').ToArray();
+                string city = cityAndVehicles[0];
+                string[] vehiclesAndCapacities = cityAndVehicles[1].Split(',').ToArray();
+                
+                if (!travelDatabase.ContainsKey(city))
                 {
-                    string[] vehicle = currVehicle.Split('-');
-                    totalPasagers += int.Parse(vehicle.Last());
+                    travelDatabase[city] = new Dictionary<string, int>();
                 }
-
-                if (!destinationsDatabase.ContainsKey(destination))
+                foreach(string currVehicleAndCapacity in vehiclesAndCapacities)
                 {
-                    destinationsDatabase[destination] = totalPasagers;
-                }
-                else
-                {
-                    destinationsDatabase[destination] += totalPasagers;
+                    string[] currVehicleData = currVehicleAndCapacity.Split('-').ToArray();
+                    string vehicle = currVehicleData[0];
+                    int capacity = int.Parse(currVehicleData[1]);
+                    if (!travelDatabase[city].ContainsKey(vehicle))
+                    {
+                        travelDatabase[city][vehicle] = 0;
+                    }
+                    travelDatabase[city][vehicle] = capacity;
                 }
                 input = Console.ReadLine();
             }
             input = Console.ReadLine();
-            while (input != "travel time!")
+            while(input != "travel time!")
             {
-                string[] tokens = input.Split(' ').ToArray();
-                string desiredDestination = tokens.First();
-                int travelers = int.Parse(tokens.Last());
-                if (destinationsDatabase[desiredDestination] >= travelers)
+                string[] cityAndCapacityDemand = input.Split(' ').ToArray();
+                string demandCity = cityAndCapacityDemand[0];
+                int demandCapacity = int.Parse(cityAndCapacityDemand[1]);
+                int actualCapacity = travelDatabase[demandCity].Values.Sum();
+                if(actualCapacity >= demandCapacity)
                 {
-                    Console.WriteLine($"{desiredDestination} -> all {travelers} accommodated");
+                    Console.WriteLine($"{demandCity} -> all {demandCapacity} accommodated");
                 }
                 else
                 {
-                    Console.WriteLine($"{desiredDestination} -> all except {Math.Abs(destinationsDatabase[desiredDestination] - travelers)} accommodated");
+                    Console.WriteLine($"{demandCity} -> all except {Math.Abs(demandCapacity - actualCapacity)} accommodated");
                 }
                 input = Console.ReadLine();
             }
-
+      
         }
     }
 }

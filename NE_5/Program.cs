@@ -8,37 +8,53 @@ namespace NE_5
 {
     class Program
     {
+       
         static void Main()
         {
-            Dictionary<string, List<int>> dict = new Dictionary<string, List<int>>();
+            Dictionary<string, List<long>> dict = new Dictionary<string, List<long>>();
             string input = Console.ReadLine();
             while (input != "end")
             {
-                string[] delim = new string[] { " -> "}.ToArray();
-                string[] namesAndNums = input.Split(delim, StringSplitOptions.RemoveEmptyEntries);
-                string name = namesAndNums[0];
-                List<int> currNums = new List<int>();
-                if (namesAndNums.Contains(" ,"))
+                string[] firstDilim = new string[] {" -> "}.ToArray();
+                string[] firstSplit = input.Split(firstDilim, StringSplitOptions.RemoveEmptyEntries);
+                string firstName = firstSplit[0];
+                List<long> currNums = new List<long>();
+                long singleNum = 0;
+                if (firstSplit[1].Contains(", ") || long.TryParse(firstSplit[1], out singleNum))
                 {
-                    string[] numsDelim = new string[] { " ", "," }.ToArray();
-                    currNums = namesAndNums[1].Split(numsDelim, StringSplitOptions.RemoveEmptyEntries).
-                        Select(int.Parse).ToList();
+                    if (long.TryParse(firstSplit[1], out singleNum))
+                    {
+                        currNums.Add(singleNum);
+                    }
+                    else
+                    {
+                        string[] secondDilim = new string[] {", "};
+                        currNums = firstSplit[1]
+                            .Split(secondDilim, StringSplitOptions.RemoveEmptyEntries)
+                            .Select(long.Parse)
+                            .ToList();
+                    }
+
+                    if (!dict.ContainsKey(firstName))
+                    {
+                        dict[firstName] = new List<long>();
+                    }
+                    dict[firstName].AddRange(currNums);
                 }
                 else
                 {
-                    if (dict.ContainsKey(namesAndNums[1]) && dict.ContainsKey(name))
+                    string secondName = firstSplit[1];
+                    if (dict.ContainsKey(secondName))
                     {
-                        dict[name] = dict[namesAndNums[1]];
+                        dict[firstName] = new List<long> (dict[secondName]); 
                     }
-                    continue;
+
                 }
-                if(!dict.ContainsKey(name))
-                {                  
-                    dict[name] = currNums;
-                    continue;
-                }
-                
-                    int t = 0;
+                input = Console.ReadLine();
+            }
+            foreach (string currName in dict.Keys)
+            {
+                Console.WriteLine($"{currName} === {string.Join(", ", dict[currName])}");
             }
         }
     }

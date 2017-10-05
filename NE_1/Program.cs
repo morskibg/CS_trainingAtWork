@@ -42,7 +42,7 @@ namespace NE_1
                 }
 
             }
-
+             
             string[] toFind = Console.ReadLine().Split(' ').ToArray();
             string colorToFind = toFind[0];
             string itemTofind = toFind[1];

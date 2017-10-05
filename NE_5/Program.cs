@@ -17,21 +17,27 @@ namespace NE_5
                 string[] delim = new string[] { " -> "}.ToArray();
                 string[] namesAndNums = input.Split(delim, StringSplitOptions.RemoveEmptyEntries);
                 string name = namesAndNums[0];
-                List<int> currNums = new List<int>;
+                List<int> currNums = new List<int>();
                 if (namesAndNums.Contains(" ,"))
                 {
                     string[] numsDelim = new string[] { " ", "," }.ToArray();
                     currNums = namesAndNums[1].Split(numsDelim, StringSplitOptions.RemoveEmptyEntries).
                         Select(int.Parse).ToList();
-                }                
-                if(!dict.ContainsKey(name))
-                {
-                    if (currNums.Count == 0)
-                    {
-                        continue;
-                    }
-                    dict[name] = new List<int>();
                 }
+                else
+                {
+                    if (dict.ContainsKey(namesAndNums[1]) && dict.ContainsKey(name))
+                    {
+                        dict[name] = dict[namesAndNums[1]];
+                    }
+                    continue;
+                }
+                if(!dict.ContainsKey(name))
+                {                  
+                    dict[name] = currNums;
+                    continue;
+                }
+                
                     int t = 0;
             }
         }

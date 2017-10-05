@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. Increasing Crisis", "1\5. Increasing Crisis.csproj", "{AA1FBA17-FCA6-4DA7-A28C-27AEA6A8F058}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NE_2", "NE_2\NE_2.csproj", "{2F0EC461-FBAB-4BDE-8558-8C653441ECEA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NE_3", "NE_3\NE_3.csproj", "{B886A542-0BF6-4A8B-A5B5-B1E1749F3C6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NE_4", "NE_4\NE_4.csproj", "{FE5A99B2-EF02-480B-9160-D8168ACB65A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{B886A542-0BF6-4A8B-A5B5-B1E1749F3C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B886A542-0BF6-4A8B-A5B5-B1E1749F3C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B886A542-0BF6-4A8B-A5B5-B1E1749F3C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE5A99B2-EF02-480B-9160-D8168ACB65A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE5A99B2-EF02-480B-9160-D8168ACB65A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE5A99B2-EF02-480B-9160-D8168ACB65A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE5A99B2-EF02-480B-9160-D8168ACB65A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

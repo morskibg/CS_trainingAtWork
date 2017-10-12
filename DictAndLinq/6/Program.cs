@@ -29,16 +29,16 @@ namespace _6
                 logUsers[user][IP]++;
                 line = Console.ReadLine();
             }
-            if(logUsers.Count ==)
+            
             foreach (var currUser in logUsers)
             {
-                Console.WriteLine($"{currUser.Key}:");
+                Console.WriteLine($"{currUser.Key}: ");
                 int size = currUser.Value.Count;
                 foreach (var curIP in currUser.Value)
                 {
                     if (size != 1)
                     {
-                        Console.WriteLine($"{curIP.Key}=> {curIP.Value},");
+                        Console.Write($"{curIP.Key}=> {curIP.Value}, ");
                     }
                     else
                     {

@@ -64,6 +64,7 @@ namespace _4
             {
                 int totalCardsPower = currPlayer.Value.Select(x => CalculateCardValue(x)).ToArray().Sum();
                 Console.WriteLine($"{currPlayer.Key}: {totalCardsPower}");
+                
             }
         }
     }

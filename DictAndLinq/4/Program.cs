@@ -32,7 +32,7 @@ namespace _4
         static int CalculateCardValue(string powerAndType)
         {
             string Type = powerAndType[powerAndType.Length - 1].ToString();
-            string Power = powerAndType.Substring(0, powerAndType.Length - 1).ToString();
+            string Power = powerAndType.Substring(0, powerAndType.Length - 1);
             int power = ReturnPowerFactor(Power);
             int type = ReturnPowerFactor(Type);
             return power * type;

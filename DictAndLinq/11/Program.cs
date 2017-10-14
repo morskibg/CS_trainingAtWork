@@ -27,10 +27,11 @@ namespace _11
                         {tokens[1], new List<int> {45, 250, 10} }
                     };
                 }
-                if (!draKons[tokens[0]].ContainsKey(tokens[1]))
-                {
+                //if (!draKons[tokens[0]].ContainsKey(tokens[1]))
+                //{
                     draKons[tokens[0]][tokens[1]] = new List<int> {45, 250, 10};
-                }
+               // }
+                
                 for (int j = 2; j < 5; j++)
                 {
                     int currStats = 0;
@@ -40,12 +41,17 @@ namespace _11
                     }
                 }
             }
-            int curIdx = 0;
+            
             foreach (var colorDraKon in draKons)
             {
-                Console.WriteLine(string.Join(" ", colorDraKon.Value.Values.Take(1).ElementAt(0)));
-                
-                int t = 0;
+                double averageDamage = colorDraKon.Value.Values.Average(x => x.ElementAt(0));
+                double averageHealth = colorDraKon.Value.Values.Average(x => x.ElementAt(1));
+                double averageArmor = colorDraKon.Value.Values.Average(x => x.ElementAt(2));
+                Console.WriteLine($"{colorDraKon.Key}::({averageDamage:f2}/{averageHealth:f2}/{averageArmor:f2})");
+                foreach (var name in colorDraKon.Value.OrderBy(x => x.Key))
+                {
+                    Console.WriteLine($"-{name.Key} -> damage: {name.Value[0]}, health: {name.Value[1]}, armor: {name.Value[2]}"); 
+                }
             }
             
         }

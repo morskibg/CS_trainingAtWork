@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. Increasing Crisis", "1\5. Increasing Crisis.csproj", "{AA1FBA17-FCA6-4DA7-A28C-27AEA6A8F058}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NE_6", "NE_6\NE_6.csproj", "{BFA1DB4D-5159-4D20-85A9-1D70A8CDC0F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NE_7", "NE_7\NE_7.csproj", "{DCE9F86A-F1DB-46FA-BB85-58562EEBD5BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon", "Pokemon\Pokemon.csproj", "{39B67767-B08C-48A6-B345-B476FD5D3CA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{DCE9F86A-F1DB-46FA-BB85-58562EEBD5BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCE9F86A-F1DB-46FA-BB85-58562EEBD5BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCE9F86A-F1DB-46FA-BB85-58562EEBD5BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B67767-B08C-48A6-B345-B476FD5D3CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B67767-B08C-48A6-B345-B476FD5D3CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B67767-B08C-48A6-B345-B476FD5D3CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B67767-B08C-48A6-B345-B476FD5D3CA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

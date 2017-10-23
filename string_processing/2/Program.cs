@@ -11,15 +11,15 @@ namespace _2
         static void Main(string[] args)
         {
             string input = Console.ReadLine().ToLower();
-            string matchStr = Console.ReadLine().ToLower();
-            int matchCounter = 0;
-            int lastIdx = input.LastIndexOf(matchStr);
-            while (lastIdx != -1)
+            string matchingStr = Console.ReadLine().ToLower();
+            int count = 0;
+            int idx = input.IndexOf(matchingStr);
+            while (idx != -1)
             {
-                ++matchCounter;                
-                lastIdx = input.LastIndexOf(matchStr, lastIdx + 1);
+                ++count;
+                idx = input.IndexOf(matchingStr, idx + 1);
             }
-            Console.WriteLine(matchCounter);
+            Console.WriteLine(count);
         }
     }
 }

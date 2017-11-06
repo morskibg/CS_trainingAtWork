@@ -34,7 +34,7 @@ namespace _03.Anonymous_Vox
                 int sizeToRemove = toReplace[i].Length;
                 StringBuilder sb = new StringBuilder();
                 sb.Append(encrypted.Substring(0, occurence));
-                sb.Append(placeholdersRaw[i].ToString());
+                sb.Append(placeholdersRaw[i]);
                 sb.Append(encrypted.Substring(occurence + sizeToRemove));
                 encrypted = sb.ToString();
             }

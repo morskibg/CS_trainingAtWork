@@ -12,10 +12,10 @@ namespace _04.Anonymous_Cache
     {
         static void Main(string[] args)
         {
-            Dictionary<string, Dictionary<string, BigInteger>> database = 
-                new Dictionary<string, Dictionary<string, BigInteger>>();
-            Dictionary<string, Dictionary<string, BigInteger>> cache =
-                new Dictionary<string, Dictionary<string, BigInteger>>();
+            Dictionary<string, Dictionary<string, long>> database = 
+                new Dictionary<string, Dictionary<string, long>>();
+            Dictionary<string, Dictionary<string, long>> cache =
+                new Dictionary<string, Dictionary<string, long>>();
             while (true)
             {
                 string line = Console.ReadLine();
@@ -23,28 +23,34 @@ namespace _04.Anonymous_Cache
                 {
                     break;
                 }
-                string pattern = @"^(?<key>[^ \|\-\>]+)[ \-\>]+(?<size>\d+)[ \|]+(?<set>[^ \|\-\>]+)$|^(?<singleSet>[^ \|\-\>]+)$";
+
+                string pattern = @"^(?<key>[^\s\|\-\>]*)[\s\-\>]*(?<size>[0-9]+)[\s\|]*(?<set>[^\s\|\-\>]*)$";
                 Match parsedInput = Regex.Match(line, pattern);
-                if (parsedInput.Groups["singleSet"].Success)
+                
+                
+                if (!line.Contains("|"))
                 {
-                    string set = parsedInput.Groups["singleSet"].ToString();
+                    string set = line.Trim();
                     if (!database.ContainsKey(set))
                     {
-                        database[set] = new Dictionary<string, BigInteger>();
+                        database[set] = new Dictionary<string, long>();
                         if (cache.ContainsKey(set))
                         {
                             foreach(var currKey in cache[set])
                             {
                                 database[set].Add(currKey.Key, currKey.Value);
                             }
+                            cache.Remove(set);
                         }
                     }
                 }
                 else
                 {
+                    
                     string set = parsedInput.Groups["set"].ToString();
                     string dataKey = parsedInput.Groups["key"].ToString();
-                    BigInteger dataSize = BigInteger.Parse(parsedInput.Groups["size"].ToString());
+                    string rawSize = parsedInput.Groups["size"].ToString();
+                    long dataSize = long.Parse(rawSize);
                     if (database.ContainsKey(set))
                     {
                         database[set].Add(dataKey, dataSize);
@@ -53,21 +59,22 @@ namespace _04.Anonymous_Cache
                     {
                         if (!cache.ContainsKey(set))
                         {
-                            cache[set] = new Dictionary<string, BigInteger>();
+                            cache[set] = new Dictionary<string, long>();
                         }
                         cache[set][dataKey] = dataSize;
                     }
                 }
-               
-
-                
             }
-            BigInteger maxSum = 0;
+            if(database.Count == 0)
+            {
+                return;
+            }
+            long maxSum = -1;
             string maxSet = "";
             var maxKeys = new List<string>();
             foreach (var item in database)
             {
-                BigInteger innerSum = 0;
+                long innerSum = 0;
                 foreach (var innerItem in item.Value)
                 {
                     innerSum += innerItem.Value;

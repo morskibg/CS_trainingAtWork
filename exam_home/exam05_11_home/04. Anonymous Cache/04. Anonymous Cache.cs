@@ -24,10 +24,10 @@ namespace _04.Anonymous_Cache
                     break;
                 }
 
-                string pattern = @"^(?<key>[^\s\|\-\>]*)[\s\-\>]*(?<size>[0-9]+)[\s\|]*(?<set>[^\s\|\-\>]*)$";
-                Match parsedInput = Regex.Match(line, pattern);
-                
-                
+                //string pattern = @"^(?<key>[^\s\|\-\>]*)[\s\-\>]*(?<size>[0-9]+)[\s\|]*(?<set>[^\s\|\-\>]*)$";
+                //Match parsedInput = Regex.Match(line, pattern);
+
+                var parsedInput = line.Split(" |->".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToArray();
                 if (!line.Contains("|"))
                 {
                     string set = line.Trim();
@@ -45,11 +45,10 @@ namespace _04.Anonymous_Cache
                     }
                 }
                 else
-                {
-                    
-                    string set = parsedInput.Groups["set"].ToString();
-                    string dataKey = parsedInput.Groups["key"].ToString();
-                    string rawSize = parsedInput.Groups["size"].ToString();
+                {                    
+                    string set = parsedInput[2];
+                    string dataKey = parsedInput[0];
+                    string rawSize = parsedInput[1];
                     long dataSize = long.Parse(rawSize);
                     if (database.ContainsKey(set))
                     {
@@ -69,29 +68,13 @@ namespace _04.Anonymous_Cache
             {
                 return;
             }
-            long maxSum = -1;
-            string maxSet = "";
-            var maxKeys = new List<string>();
-            foreach (var item in database)
+            var maxSum = database.OrderByDescending(x => x.Value.Values.Sum()).First();
+            Console.WriteLine($"Data Set: {maxSum.Key}, Total Size: {maxSum.Value.Values.Sum()}");
+            foreach(var key in maxSum.Value)
             {
-                long innerSum = 0;
-                foreach (var innerItem in item.Value)
-                {
-                    innerSum += innerItem.Value;
-                }
-                if(innerSum > maxSum)
-                {
-                    maxSum = innerSum;
-                    maxSet = item.Key;
-                    maxKeys.Clear();
-                    maxKeys.AddRange(item.Value.Keys);
-                }
+                Console.WriteLine($"$.{key.Key}");
             }
-            Console.WriteLine($"Data Set: {maxSet}, Total Size: {maxSum}");
-            foreach(var item in maxKeys)
-            {
-                Console.WriteLine($"$.{item}");
-            }
+          
         }
     }
 }
